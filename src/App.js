@@ -12,8 +12,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log('here you go, ben')
-
     const {
       bagels,
       favorites
@@ -29,6 +27,8 @@ export default class App extends Component {
         
         <FavoriteBagels 
           bagels={favorites}
+          clearFavorites={this.clearFavorites}
+          removeFromFavorites={this.removeFromFavorites}
         />
       </div>
     );
@@ -55,7 +55,21 @@ export default class App extends Component {
 
   addToFavorites = (bagel) => {
     this.setState({
-      favorites: [...this.state.favorites, bagel]
+      favorites: [...this.state.favorites, bagel],
+    })
+  }
+
+  clearFavorites = () => {
+    this.setState({
+      favorites: [],
+    })
+  }
+
+  removeFromFavorites = (id) => {
+    const { favorites } = this.state
+
+    this.setState({
+      favorites: this.filteredBagels(favorites)(id)
     })
   }
 

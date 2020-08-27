@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoriteBagel from '../components/FavoriteBagel';
 
-export default function FavoriteBagels({ bagels }) {
+export default function FavoriteBagels({ bagels, clearFavorites, removeFromFavorites }) {
 
   const favBagelList = (bagels) => {
     return bagels.map(bagel => {
@@ -9,6 +9,7 @@ export default function FavoriteBagels({ bagels }) {
         <FavoriteBagel
           key={bagel.id}
           bagel={bagel}
+          removeFromFavorites={removeFromFavorites}
         />
       )
     })
@@ -17,7 +18,7 @@ export default function FavoriteBagels({ bagels }) {
   return (
     <div className="favorite-bagels">
       <h1>Favorites:</h1>
-      <button>Clear</button>
+      <button onClick={clearFavorites}>Clear</button>
       <ul>
         {favBagelList(bagels)}
       </ul>
