@@ -18,8 +18,9 @@ export default function BagelContainer({ bagels, deleteBagel, addToFavorites }) 
   }
 
   return (
-    <ul className="bagel-list">
+    <div className="bagel-list">
+      <h1>Bagels:</h1>
       {bagelList(bagels)(deleteBagel)}
-    </ul>
+    </div>
   );
 }

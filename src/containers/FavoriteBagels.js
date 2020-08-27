@@ -15,8 +15,12 @@ export default function FavoriteBagels({ bagels }) {
   }
  
   return (
-    <ul className="favorite-bagels">
-      {favBagelList(bagels)}
-    </ul>
+    <div className="favorite-bagels">
+      <h1>Favorites:</h1>
+      <button>Clear</button>
+      <ul>
+        {favBagelList(bagels)}
+      </ul>
+    </div>
   )
 }

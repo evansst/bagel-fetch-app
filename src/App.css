@@ -1,5 +1,8 @@
 .App {
+  width: 100%;
   text-align: center;
+  display: inline-flex;
+  justify-content: space-around;
 }
 
 .App-logo {
@@ -26,6 +29,14 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.bagel-list {
+
+}
+
+.favorite-bagels {
+
 }
 
 @keyframes App-logo-spin {
