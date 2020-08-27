@@ -1,12 +1,17 @@
 import React from 'react';
 
-export default function Bagel({id, type, rating, deleteBagel}) {
+export default function Bagel(props) {
+  const {
+    bagel,
+    deleteBagel,
+    addToFavorites,
+  } = props
 
   return (
     <li className="bagel">
-      <p>Type: {type}, Rating: {rating}</p>
-      <button >Add to Favorites</button>
-      <button onClick={() => deleteBagel(id)}>Delete</button>
+      <p>Type: {bagel.type}, Rating: {bagel.rating}</p>
+      <button onClick={() => addToFavorites(bagel)}>Add to Favorites</button>
+      <button onClick={() => deleteBagel(bagel.id)}>Delete</button>
     </li>
   )
 }

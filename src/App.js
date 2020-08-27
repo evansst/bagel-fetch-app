@@ -7,13 +7,18 @@ const baseURL = 'https://bagel-api-fis.herokuapp.com/bagels/';
 export default class App extends Component {
   state = {
     bagels: [],
+    favorites: [],
   }
 
   render() {
     return (
       <div className="App">
         <h1>Bagels:</h1>
-        <BagelContainer bagels={this.state.bagels} deleteBagel={this.handleButtonClick}/>
+        <BagelContainer
+          bagels={this.state.bagels}
+          deleteBagel={this.deleteBagel}
+          addToFavorites={this.addToFavorites}
+        />
       </div>
     );
   }
@@ -27,7 +32,7 @@ export default class App extends Component {
       }))
   }
 
-  handleButtonClick = (id) => {
+  deleteBagel = (id) => {
     fetch(`${baseURL}${id}`, {
       method: 'DELETE'
     })
@@ -38,6 +43,13 @@ export default class App extends Component {
 
     this.setState({
       bagels: filteredBagels(this.state.bagels)
+    })
+  }
+
+  addToFavorites = (bagel) => {
+
+    this.setState({
+      favorites: [...this.state.favorites, bagel]
     })
   }
 }
