@@ -35,7 +35,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-
     fetch(baseURL)
       .then(response => response.json())
       .then(bagels => this.setState({
