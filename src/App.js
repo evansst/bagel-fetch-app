@@ -48,7 +48,7 @@ export default class App extends Component {
     fetch(`${baseURL}/${id}`, { method: 'DELETE' })
 
     this.setState({
-      bagels: this.filteredBagels(bagels)(id)
+      bagels: this.removeBagel(bagels)(id)
     })
   }
 
@@ -68,11 +68,11 @@ export default class App extends Component {
     const { favorites } = this.state
 
     this.setState({
-      favorites: this.filteredBagels(favorites)(id)
+      favorites: this.removeBagel(favorites)(id)
     })
   }
 
-  filteredBagels = (bagels) => {
+  removeBagel = (bagels) => {
     return (id) => {
       return bagels.filter(bagel => bagel.id !== id)
     }
