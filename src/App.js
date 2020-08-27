@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import BagelContainer from './containers/BagelContainer';
+import BagelContainer from './containers/BagelContainer.js';
+import FavoriteBagels from './containers/FavoriteBagels.js';
 
 const baseURL = 'https://bagel-api-fis.herokuapp.com/bagels/';
 
@@ -11,13 +12,24 @@ export default class App extends Component {
   }
 
   render() {
+    console.log('here you go, ben')
+
+    const {
+      bagels,
+      favorites
+    } = this.state
+
     return (
       <div className="App">
         <h1>Bagels:</h1>
         <BagelContainer
-          bagels={this.state.bagels}
+          bagels={bagels}
           deleteBagel={this.deleteBagel}
           addToFavorites={this.addToFavorites}
+        />
+        <h1>Favorites:</h1>
+        <FavoriteBagels 
+          bagels={favorites}
         />
       </div>
     );

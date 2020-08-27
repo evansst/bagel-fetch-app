@@ -6,7 +6,13 @@ export default function BagelContainer({ bagels, deleteBagel, addToFavorites }) 
   const bagelList = (bagels) => {
     return (deleteBagel) => {
       return bagels.map(bagel => {
-        return <Bagel key={bagel.id} deleteBagel={deleteBagel} addToFavorites={addToFavorites} bagel={bagel}/>
+        return (
+          <Bagel key={bagel.id}
+            deleteBagel={deleteBagel}
+            addToFavorites={addToFavorites}
+            bagel={bagel}
+          />
+        )
       })
     }
   }
