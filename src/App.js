@@ -9,6 +9,15 @@ export default class App extends Component {
     bagels: [],
   }
 
+  render() {
+    return (
+      <div className="App">
+        <h1>Bagels:</h1>
+        <BagelContainer bagels={this.state.bagels} deleteBagel={this.handleButtonClick}/>
+      </div>
+    );
+  }
+
   componentDidMount() {
 
     fetch(baseURL)
@@ -17,13 +26,18 @@ export default class App extends Component {
         bagels: bagels,
       }))
   }
-  
-  render() {
-    return (
-      <div className="App">
-        <h1>Bagels:</h1>
-        <BagelContainer bagels={this.state.bagels} />
-      </div>
-    );
+
+  handleButtonClick = (id) => {
+    fetch(`${baseURL}${id}`, {
+      method: 'DELETE'
+    })
+
+    const filteredBagels = (bagels) => {
+      return bagels.filter(bagel => bagel.id !== id)
+    }
+
+    this.setState({
+      bagels: filteredBagels(this.state.bagels)
+    })
   }
 }
